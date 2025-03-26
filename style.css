@@ -8983,6 +8983,15 @@ div.elementor-widget-heading.elementor-widget-heading .elementor-heading-title {
   transition: all 0.3s ease;
 }
 
+.link_h_bx {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
 
 /* Image Styles */
 .xpic-card img {
@@ -9005,7 +9014,7 @@ div.elementor-widget-heading.elementor-widget-heading .elementor-heading-title {
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 30px;
+  padding: 25px 30px;
   z-index: 2;
   
 }
@@ -9036,7 +9045,13 @@ div.elementor-widget-heading.elementor-widget-heading .elementor-heading-title {
   display: inline-block;
   font-family: xpicon !important;
   transition: all 0.3s ease-out;
-  
+  margin: 0 0 -70px 0;
+  opacity: 0;
+}
+
+.xpic-card:hover .xpic-title-box a::after {
+  margin: 0;
+  opacity: 1;
 }
 
 /* Hide Original Link */
