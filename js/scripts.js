@@ -317,26 +317,6 @@
 	    });	
 	}
 
-	/* --------------------------------------------------
-	 * Smooth Scrolling to Sections
-	 * --------------------------------------------------*/
-	if ($('a[href^="#"]').length) {
-	    $('a[href^="#"]').on('click', function (e) {
-	        // Exclude links within the tab-titles container
-	        if ($(this).closest('.tab-titles').length) {
-	            return; // Do nothing for links in tab-titles
-	        }
-
-	        e.preventDefault();
-
-	        var target = $(this.getAttribute('href'));
-	        if (target.length) {
-	            $('html, body').animate({
-	                scrollTop: target.offset().top
-	            }, 700); // Adjust duration as needed (700ms)
-	        }
-	    });
-	}
 
 	/*
 	* Footer fixed
