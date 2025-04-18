@@ -35,7 +35,10 @@ locate_template('/inc/backend/elementor/widgets/features-service.php', true, tru
 locate_template('/inc/backend/elementor/widgets/food-price-menu.php', true, true);
 locate_template('/inc/backend/elementor/widgets/custom-template.php', true, true);
 locate_template('/inc/backend/elementor/widgets/food-box.php', true, true);
-locate_template('/inc/backend/elementor/widgets/woocommerce-products.php', true, true);
+// Load WooCommerce widget only if WooCommerce is active
+if ( class_exists('WooCommerce') ) {
+    locate_template('/inc/backend/elementor/widgets/woocommerce-products.php', true, true);
+}
 locate_template('/inc/backend/elementor/widgets/text-marquee.php', true, true);
 locate_template('/inc/backend/elementor/widgets/image-box-2.php', true, true);
 locate_template('/inc/backend/elementor/widgets/dynamic-title.php', true, true);
