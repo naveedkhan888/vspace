@@ -4399,6 +4399,8 @@ object {
   -moz-transition: all 0.3s linear;
   -o-transition: all 0.3s linear;
   -ms-transition: all 0.3s linear;
+  display: inline-block;
+  width: auto;
 }
 .logos-carousel .owl-nav button.owl-next,
 .logos-carousel .owl-nav button.owl-prev {
