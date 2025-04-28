@@ -6689,6 +6689,7 @@ object {
   border-width: 0 0 1px 0;
   border-color: transparent;
   border-radius: 0;
+  background:transparent;
 }
 .dark__form .main_wraper textarea, 
 .dark__form .main_wraper input.wpcf7-form-control {
