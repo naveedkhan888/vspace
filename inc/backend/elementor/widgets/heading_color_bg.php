@@ -268,6 +268,42 @@ class Xhub_Heading_Bg extends Widget_Base{
 				]
 			]
 		);
+		$this->add_control(
+		    'title_padding',
+		    [
+		        'label' => __( 'Padding', 'xhub' ),
+		        'type' => \Elementor\Controls_Manager::DIMENSIONS,
+		        'size_units' => [ 'px', 'em', '%' ],
+		        'default' => [
+		            'top' => '',
+		            'right' => '',
+		            'bottom' => '',
+		            'left' => '',
+		            'unit' => 'px',
+		        ],
+		        'selectors' => [
+		            '{{WRAPPER}} .xp-heading .main-head' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+		        ],
+		    ]
+		);
+		$this->add_control(
+		    'title_border_radius',
+		    [
+		        'label' => __( 'Border Radius', 'xhub' ),
+		        'type' => \Elementor\Controls_Manager::DIMENSIONS,
+		        'size_units' => [ 'px', '%' ],
+		        'default' => [
+		            'top' => '',
+		            'right' => '',
+		            'bottom' => '',
+		            'left' => '',
+		            'unit' => 'px',
+		        ],
+		        'selectors' => [
+		            '{{WRAPPER}} .xp-heading .main-head' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+		        ],
+		    ]
+		);
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
