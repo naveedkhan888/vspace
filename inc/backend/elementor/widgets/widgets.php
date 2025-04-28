@@ -1,6 +1,7 @@
 <?php
 // Include widget files for Elementor widgets
 locate_template('/inc/backend/elementor/widgets/heading.php', true, true);
+locate_template('/inc/backend/elementor/widgets/heading_color_bg.php', true, true);
 locate_template('/inc/backend/elementor/widgets/button.php', true, true);
 locate_template('/inc/backend/elementor/widgets/tabs.php', true, true);
 locate_template('/inc/backend/elementor/widgets/accordions.php', true, true);

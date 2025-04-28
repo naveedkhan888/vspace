@@ -3608,6 +3608,25 @@ object {
   margin-bottom: 0;
 }
 
+.xp-heading-bg {
+  -webkit-filter:
+url(#goo);
+  filter: url(#goo);
+}
+.xp-heading-bg .main-head {
+  background: #ccc;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding:
+0.5rem 1rem .5rem;
+  color: #212121;
+  border-radius:
+24px;
+  display: inline;
+  font-size: 24px;
+  line-height: 1.5;
+}
+
 /*--------------------------------------------------------------
 # Elementor icons and other
 --------------------------------------------------------------*/
