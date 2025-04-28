@@ -293,7 +293,8 @@ class Xhub_Heading_Bg extends Widget_Base{
 		?>
 		<div class="xp-heading xp-heading-bg">
 	        <?php if( ! empty( $settings['sub'] ) ) { echo '<span '.$this->get_render_attribute_string( 'subtitle' ).'>' .$settings['sub']. '</span>'; } ?>
-	        <?php if( ! empty( $settings['title'] ) ) { echo wp_kses_post( $title_html ); } ?>
+	        <div class="heading_inner">
+	        <?php if( ! empty( $settings['title'] ) ) { echo wp_kses_post( $title_html ); } ?></div>
 	    </div>
 	    <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
                             <defs>

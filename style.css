@@ -3608,12 +3608,12 @@ object {
   margin-bottom: 0;
 }
 
-.xp-heading-bg {
+.xp-heading-bg .heading_inner {
   -webkit-filter:
 url(#goo);
   filter: url(#goo);
 }
-.xp-heading-bg .main-head {
+.xp-heading-bg .heading_inner .main-head {
   background: #ccc;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
