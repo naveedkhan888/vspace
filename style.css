@@ -906,13 +906,14 @@ td {
 .is-stuck.blurred_background {
   backdrop-filter: blur(13px);
 }
-
+.blurred_bg {
+  -webkit-backdrop-filter: saturate(180%) blur(40px);
+  backdrop-filter: saturate(180%) blur(40px);
+}
 .blur_background {
   backdrop-filter: blur(13px);
   border-radius: 50%;
 }
-
-
 .rotate_anim svg {
     animation: rotate 20s linear infinite;
 }
