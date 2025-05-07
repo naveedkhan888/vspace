@@ -1195,7 +1195,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
 		}
 
 ?>
-        <?php if ($settings['design_style'] === 'style_3') : ?>
+        <?php if (isset($settings['design_style']) && $settings['design_style'] === 'style_3') : ?>
 
 
             <div class="pricing-two-item">
@@ -1221,11 +1221,11 @@ class Xhub_Pricing_Table_New extends Widget_Base
                 </div>
             </div>
 
-        <?php elseif ($settings['design_style'] === 'style_2') :
+        <?php elseif (isset($settings['design_style']) && $settings['design_style'] === 'style_2') :
 
-            $class_name = $settings['active_price'] ? 'active' : '';
+		    $class_name = !empty($settings['active_price']) ? 'active' : '';
 
-        ?>
+		?>
 
             <div class="pricing-three-item mb-30 <?php print esc_attr($class_name); ?>">
                 <div class="pricing-three-head">
@@ -1275,11 +1275,13 @@ class Xhub_Pricing_Table_New extends Widget_Base
 
         <?php else :
 
-            $class_name = $settings['active_price'] ? 'active' : '';
+            $class_name = !empty($settings['active_price']) ? 'active' : '';
 
             $this->add_inline_editing_attributes('button_footer', 'none');
             $this->add_render_attribute('button_footer', 'class', 'price-btn');
-            $this->add_link_attributes('button_footer', $settings['button_link']);
+            if (!empty($settings['button_link'])) {
+			    $this->add_link_attributes('button_footer', $settings['button_link']);
+			}
         ?>
             <div class="pricing-item mb-30 <?php print esc_attr($class_name); ?>">
                 <div class="pricing-thumb">
