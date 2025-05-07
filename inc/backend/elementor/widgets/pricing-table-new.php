@@ -1581,3 +1581,6 @@ class Xhub_Pricing_Table_New extends Widget_Base
         <?php
     }
 }
+
+
+Plugin::instance()->widgets_manager->register( new Xhub_Pricing_Table_New() );
