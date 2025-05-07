@@ -4,51 +4,93 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly (security measu
 
 /**
  * Widget Name: Pricing Table New
+ * Description: A premium pricing table widget for Elementor with multiple styles and customization options
+ * @since 1.0.0
  */
 class Xhub_Pricing_Table_New extends Widget_Base
 {
-
+    /**
+     * Get widget name.
+     *
+     * @return string Widget name.
+     */
     public function get_name()
     {
         return 'ipricingtablenew';
     }
 
-
+    /**
+     * Get widget title.
+     *
+     * @return string Widget title.
+     */
     public function get_title()
     {
-        return __('Pricing Table New', 'xhub');
+        return esc_html__('Pricing Table New', 'xhub');
     }
 
-
+    /**
+     * Get widget icon.
+     *
+     * @return string Widget icon.
+     */
     public function get_icon()
     {
-        return 'eicon-table-of-contents';
+        return 'eicon-price-table';
     }
 
+    /**
+     * Get widget categories.
+     *
+     * @return array Widget categories.
+     */
+    public function get_categories()
+    {
+        return ['xhub-elements'];
+    }
+
+    /**
+     * Get widget keywords.
+     *
+     * @return array Widget keywords.
+     */
     public function get_keywords()
     {
         return ['pricing', 'price', 'table', 'package', 'product', 'plan'];
     }
 
+    /**
+     * Register widget controls.
+     */
+    protected function register_controls()
+    {
+        $this->register_content_controls();
+        $this->register_style_controls();
+    }
+
+    /**
+     * Register content controls for the widget.
+     */
     protected function register_content_controls()
     {
-
+        // Design Style Section
         $this->start_controls_section(
             '_section_design_title',
             [
-                'label' => __('Design Style', 'xhub'),
+                'label' => esc_html__('Design Style', 'xhub'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
+        
         $this->add_control(
             'design_style',
             [
-                'label' => __('Design Style', 'xhub'),
+                'label' => esc_html__('Design Style', 'xhub'),
                 'type' => Controls_Manager::SELECT,
                 'options' => [
-                    'style_1' => __('Style 1', 'xhub'),
-                    'style_2' => __('Style 2', 'xhub'),
-                    'style_3' => __('Style 3', 'xhub'),
+                    'style_1' => esc_html__('Style 1', 'xhub'),
+                    'style_2' => esc_html__('Style 2', 'xhub'),
+                    'style_3' => esc_html__('Style 3', 'xhub'),
                 ],
                 'default' => 'style_1',
                 'frontend_available' => true,
@@ -59,22 +101,23 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'active_price',
             [
-                'label' => __('Active Price', 'xhub'),
+                'label' => esc_html__('Active Price', 'xhub'),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => __('Show', 'xhub'),
-                'label_off' => __('Hide', 'xhub'),
+                'label_on' => esc_html__('Show', 'xhub'),
+                'label_off' => esc_html__('Hide', 'xhub'),
                 'return_value' => 'yes',
-                'default' => false,
+                'default' => '',
                 'style_transfer' => true,
             ]
         );
 
         $this->end_controls_section();
 
+        // Icon / Image Section
         $this->start_controls_section(
             '_section_media',
             [
-                'label' => __('Icon / Image', 'xhub'),
+                'label' => esc_html__('Icon / Image', 'xhub'),
                 'tab' => Controls_Manager::TAB_CONTENT,
                 'condition' => [
                     'design_style' => ['style_1']
@@ -85,17 +128,17 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'type',
             [
-                'label' => __('Media Type', 'xhub'),
+                'label' => esc_html__('Media Type', 'xhub'),
                 'type' => Controls_Manager::CHOOSE,
                 'label_block' => false,
                 'options' => [
                     'icon' => [
-                        'title' => __('Icon', 'xhub'),
-                        'icon' => 'fa fa-smile-o',
+                        'title' => esc_html__('Icon', 'xhub'),
+                        'icon' => 'eicon-star',
                     ],
                     'image' => [
-                        'title' => __('Image', 'xhub'),
-                        'icon' => 'fa fa-image',
+                        'title' => esc_html__('Image', 'xhub'),
+                        'icon' => 'eicon-image',
                     ],
                 ],
                 'default' => 'icon',
@@ -107,7 +150,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'image',
             [
-                'label' => __('Image', 'xhub'),
+                'label' => esc_html__('Image', 'xhub'),
                 'type' => Controls_Manager::MEDIA,
                 'default' => [
                     'url' => Utils::get_placeholder_image_src(),
@@ -142,28 +185,28 @@ class Xhub_Pricing_Table_New extends Widget_Base
         );
 
         $this->add_control(
-		    'selected_icon',
-		    [
-		        'type' => Controls_Manager::ICONS,
-		        'fa4compatibility' => 'icon',
-		        'label' => __('Icon', 'xhub'),
-		        'label_block' => true,
-		        'default' => [
-		            'value' => 'fas fa-smile-wink',
-		            'library' => 'fa-solid',
-		        ],
-		        'condition' => [
-		            'type' => 'icon'
-		        ]
-		    ]
-		);
+            'selected_icon',
+            [
+                'label' => esc_html__('Icon', 'xhub'),
+                'type' => Controls_Manager::ICONS,
+                'fa4compatibility' => 'icon',
+                'default' => [
+                    'value' => 'fas fa-star',
+                    'library' => 'fa-solid',
+                ],
+                'condition' => [
+                    'type' => 'icon'
+                ]
+            ]
+        );
 
         $this->end_controls_section();
 
+        // Header Section
         $this->start_controls_section(
             '_section_header',
             [
-                'label' => __('Header', 'xhub'),
+                'label' => esc_html__('Header', 'xhub'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -171,10 +214,10 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'title',
             [
-                'label' => __('Title', 'xhub'),
+                'label' => esc_html__('Title', 'xhub'),
                 'type' => Controls_Manager::TEXT,
                 'label_block' => true,
-                'default' => __('Basic', 'xhub'),
+                'default' => esc_html__('Basic', 'xhub'),
                 'dynamic' => [
                     'active' => true
                 ]
@@ -184,10 +227,10 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'sub_title',
             [
-                'label' => __('Sub Title', 'xhub'),
+                'label' => esc_html__('Sub Title', 'xhub'),
                 'type' => Controls_Manager::TEXT,
                 'label_block' => true,
-                'default' => __('Sub Title', 'xhub'),
+                'default' => esc_html__('Sub Title', 'xhub'),
                 'dynamic' => [
                     'active' => true
                 ]
@@ -197,10 +240,10 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'description',
             [
-                'label' => __('MBPS', 'xhub'),
+                'label' => esc_html__('MBPS', 'xhub'),
                 'type' => Controls_Manager::TEXT,
                 'label_block' => true,
-                'default' => __('MBPS', 'xhub'),
+                'default' => esc_html__('MBPS', 'xhub'),
                 'dynamic' => [
                     'active' => true
                 ],
@@ -212,25 +255,24 @@ class Xhub_Pricing_Table_New extends Widget_Base
 
         $this->end_controls_section();
 
-        // Features
+        // Devices Section
         $this->start_controls_section(
             '_section_devices',
             [
-                'label' => __('Devices', 'xhub'),
+                'label' => esc_html__('Devices', 'xhub'),
                 'condition' => [
                     'design_style' => ['style_2'],
                 ]
             ]
         );
 
-
         $this->add_control(
             'devices_switch',
             [
-                'label' => __('Show', 'xhub'),
+                'label' => esc_html__('Show', 'xhub'),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => __('Show', 'xhub'),
-                'label_off' => __('Hide', 'xhub'),
+                'label_on' => esc_html__('Show', 'xhub'),
+                'label_off' => esc_html__('Hide', 'xhub'),
                 'return_value' => 'yes',
                 'default' => 'yes',
                 'style_transfer' => true,
@@ -240,41 +282,57 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $repeater = new Repeater();
 
         $repeater->add_control(
-		    'selected_icon_2',
-		    [
-		        'label' => __('Icon', 'xhub'),
-		        'type' => Controls_Manager::ICONS,
-		        'fa4compatibility' => 'icon',
-		        'default' => [
-		            'value' => 'fas fa-check',
-		            'library' => 'fa-solid',
-		        ],
-		        'recommended' => [
-		            'fa-regular' => [
-		                'check-square',
-		                'window-close',
-		            ],
-		            'fa-solid' => [
-		                'check',
-		            ]
-		        ]
-		    ]
-		);
+            'selected_icon_2',
+            [
+                'label' => esc_html__('Icon', 'xhub'),
+                'type' => Controls_Manager::ICONS,
+                'fa4compatibility' => 'icon',
+                'default' => [
+                    'value' => 'fas fa-check',
+                    'library' => 'fa-solid',
+                ],
+                'recommended' => [
+                    'fa-regular' => [
+                        'check-square',
+                        'window-close',
+                    ],
+                    'fa-solid' => [
+                        'check',
+                    ]
+                ]
+            ]
+        );
 
         $this->add_control(
             'devices',
             [
                 'type' => Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
+                'default' => [
+                    [
+                        'selected_icon_2' => [
+                            'value' => 'fas fa-laptop',
+                            'library' => 'fa-solid',
+                        ],
+                    ],
+                    [
+                        'selected_icon_2' => [
+                            'value' => 'fas fa-mobile-alt',
+                            'library' => 'fa-solid',
+                        ],
+                    ],
+                ],
+                'title_field' => '<i class="{{ selected_icon_2.value }}"></i>',
             ]
         );
 
         $this->end_controls_section();
 
+        // Pricing Section
         $this->start_controls_section(
             '_section_pricing',
             [
-                'label' => __('Pricing', 'xhub'),
+                'label' => esc_html__('Pricing', 'xhub'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -282,11 +340,11 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'currency',
             [
-                'label' => __('Currency', 'xhub'),
+                'label' => esc_html__('Currency', 'xhub'),
                 'type' => Controls_Manager::SELECT,
                 'label_block' => false,
                 'options' => [
-                    '' => __('None', 'xhub'),
+                    '' => esc_html__('None', 'xhub'),
                     'baht' => '&#3647; ' . _x('Baht', 'Currency Symbol', 'xhub'),
                     'bdt' => '&#2547; ' . _x('BD Taka', 'Currency Symbol', 'xhub'),
                     'dollar' => '&#36; ' . _x('Dollar', 'Currency Symbol', 'xhub'),
@@ -305,7 +363,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
                     'shekel' => '&#8362; ' . _x('Shekel', 'Currency Symbol', 'xhub'),
                     'won' => '&#8361; ' . _x('Won', 'Currency Symbol', 'xhub'),
                     'yen' => '&#165; ' . _x('Yen/Yuan', 'Currency Symbol', 'xhub'),
-                    'custom' => __('Custom', 'xhub'),
+                    'custom' => esc_html__('Custom', 'xhub'),
                 ],
                 'default' => 'dollar',
             ]
@@ -314,9 +372,9 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'period_from',
             [
-                'label' => __('Start From', 'xhub'),
+                'label' => esc_html__('Start From', 'xhub'),
                 'type' => Controls_Manager::TEXT,
-                'default' => __('Start From', 'xhub'),
+                'default' => esc_html__('Start From', 'xhub'),
                 'dynamic' => [
                     'active' => true
                 ]
@@ -326,7 +384,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'currency_custom',
             [
-                'label' => __('Custom Symbol', 'xhub'),
+                'label' => esc_html__('Custom Symbol', 'xhub'),
                 'type' => Controls_Manager::TEXT,
                 'condition' => [
                     'currency' => 'custom',
@@ -340,7 +398,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'price',
             [
-                'label' => __('Price', 'xhub'),
+                'label' => esc_html__('Price', 'xhub'),
                 'type' => Controls_Manager::TEXT,
                 'default' => '9.99',
                 'dynamic' => [
@@ -352,9 +410,9 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'period',
             [
-                'label' => __('Period', 'xhub'),
+                'label' => esc_html__('Period', 'xhub'),
                 'type' => Controls_Manager::TEXT,
-                'default' => __('Per Month', 'xhub'),
+                'default' => esc_html__('Per Month', 'xhub'),
                 'dynamic' => [
                     'active' => true
                 ]
@@ -363,11 +421,11 @@ class Xhub_Pricing_Table_New extends Widget_Base
 
         $this->end_controls_section();
 
-        // Features
+        // Features Section
         $this->start_controls_section(
             '_section_features',
             [
-                'label' => __('Features', 'xhub'),
+                'label' => esc_html__('Features', 'xhub'),
                 'condition' => [
                     'design_style' => ['style_1', 'style_2']
                 ]
@@ -377,10 +435,10 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'features_switch',
             [
-                'label' => __('Show', 'xhub'),
+                'label' => esc_html__('Show', 'xhub'),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => __('Show', 'xhub'),
-                'label_off' => __('Hide', 'xhub'),
+                'label_on' => esc_html__('Show', 'xhub'),
+                'label_off' => esc_html__('Hide', 'xhub'),
                 'return_value' => 'yes',
                 'default' => 'yes',
                 'style_transfer' => true,
@@ -392,9 +450,9 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $repeater->add_control(
             'text',
             [
-                'label' => __('Text', 'xhub'),
+                'label' => esc_html__('Text', 'xhub'),
                 'type' => Controls_Manager::TEXTAREA,
-                'default' => __('Exciting Feature', 'xhub'),
+                'default' => esc_html__('Exciting Feature', 'xhub'),
                 'dynamic' => [
                     'active' => true
                 ]
@@ -402,27 +460,26 @@ class Xhub_Pricing_Table_New extends Widget_Base
         );
 
         $repeater->add_control(
-		    'selected_icon',
-		    [
-		        'label' => __('Icon', 'xhub'),
-		        'type' => Controls_Manager::ICONS,
-		        'fa4compatibility' => 'icon',
-		        'default' => [
-		            'value' => 'fas fa-check',
-		            'library' => 'fa-solid',
-		        ],
-		        'recommended' => [
-		            'fa-regular' => [
-		                'check-square',
-		                'window-close',
-		            ],
-		            'fa-solid' => [
-		                'check',
-		            ]
-		        ]
-		    ]
-		);
-
+            'selected_icon',
+            [
+                'label' => esc_html__('Icon', 'xhub'),
+                'type' => Controls_Manager::ICONS,
+                'fa4compatibility' => 'icon',
+                'default' => [
+                    'value' => 'fas fa-check',
+                    'library' => 'fa-solid',
+                ],
+                'recommended' => [
+                    'fa-regular' => [
+                        'check-square',
+                        'window-close',
+                    ],
+                    'fa-solid' => [
+                        'check',
+                    ]
+                ]
+            ]
+        );
 
         $this->add_control(
             'features_list',
@@ -432,33 +489,38 @@ class Xhub_Pricing_Table_New extends Widget_Base
                 'show_label' => false,
                 'default' => [
                     [
-                        'text' => __('Standard Feature', 'xhub'),
-                        'icon' => 'fa fa-check',
+                        'text' => esc_html__('Standard Feature', 'xhub'),
+                        'selected_icon' => [
+                            'value' => 'fas fa-check',
+                            'library' => 'fa-solid',
+                        ],
                     ],
                     [
-                        'text' => __('Another Great Feature', 'xhub'),
-                        'icon' => 'fa fa-check',
+                        'text' => esc_html__('Another Great Feature', 'xhub'),
+                        'selected_icon' => [
+                            'value' => 'fas fa-check',
+                            'library' => 'fa-solid',
+                        ],
                     ],
                     [
-                        'text' => __('Obsolete Feature', 'xhub'),
-                        'icon' => 'fa fa-close',
-                    ],
-                    [
-                        'text' => __('Exciting Feature', 'xhub'),
-                        'icon' => 'fa fa-check',
+                        'text' => esc_html__('Exciting Feature', 'xhub'),
+                        'selected_icon' => [
+                            'value' => 'fas fa-check',
+                            'library' => 'fa-solid',
+                        ],
                     ],
                 ],
-                'title_field' => '<# print(text); #>',
+                'title_field' => '{{{ text }}}',
             ]
         );
 
         $this->end_controls_section();
 
-        // Price Footer
+        // Price Footer Section
         $this->start_controls_section(
             '_section_footer',
             [
-                'label' => __('Price Footer', 'xhub'),
+                'label' => esc_html__('Price Footer', 'xhub'),
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -466,10 +528,10 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'button_text',
             [
-                'label' => __('Button Text', 'xhub'),
+                'label' => esc_html__('Button Text', 'xhub'),
                 'type' => Controls_Manager::TEXT,
-                'default' => __('Subscribe', 'xhub'),
-                'placeholder' => __('Type button text here', 'xhub'),
+                'default' => esc_html__('Subscribe', 'xhub'),
+                'placeholder' => esc_html__('Type button text here', 'xhub'),
                 'label_block' => true,
                 'dynamic' => [
                     'active' => true
@@ -480,10 +542,13 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'button_link',
             [
-                'label' => __('Link', 'xhub'),
+                'label' => esc_html__('Link', 'xhub'),
                 'type' => Controls_Manager::URL,
                 'label_block' => true,
-                'placeholder' => 'http://elementor.bdevs.net/',
+                'placeholder' => 'https://yourwebsite.com/',
+                'default' => [
+                    'url' => '#',
+                ],
                 'dynamic' => [
                     'active' => true,
                 ],
@@ -492,12 +557,13 @@ class Xhub_Pricing_Table_New extends Widget_Base
 
         $this->end_controls_section();
 
+        // Badge Section
         $this->start_controls_section(
             '_section_badge',
             [
-                'label' => __('Badge', 'xhub'),
+                'label' => esc_html__('Badge', 'xhub'),
                 'condition' => [
-                    'design_style' => ['style_10']
+                    'design_style' => ['style_1', 'style_2', 'style_3']
                 ]
             ]
         );
@@ -505,12 +571,12 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'show_badge',
             [
-                'label' => __('Show', 'xhub'),
+                'label' => esc_html__('Show', 'xhub'),
                 'type' => Controls_Manager::SWITCHER,
-                'label_on' => __('Show', 'xhub'),
-                'label_off' => __('Hide', 'xhub'),
+                'label_on' => esc_html__('Show', 'xhub'),
+                'label_off' => esc_html__('Hide', 'xhub'),
                 'return_value' => 'yes',
-                'default' => 'yes',
+                'default' => '',
                 'style_transfer' => true,
             ]
         );
@@ -518,21 +584,21 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'badge_position',
             [
-                'label' => __('Position', 'xhub'),
+                'label' => esc_html__('Position', 'xhub'),
                 'type' => Controls_Manager::CHOOSE,
                 'label_block' => false,
                 'options' => [
                     'left' => [
-                        'title' => __('Left', 'xhub'),
+                        'title' => esc_html__('Left', 'xhub'),
                         'icon' => 'eicon-h-align-left',
                     ],
                     'right' => [
-                        'title' => __('Right', 'xhub'),
+                        'title' => esc_html__('Right', 'xhub'),
                         'icon' => 'eicon-h-align-right',
                     ],
                 ],
                 'toggle' => false,
-                'default' => 'left',
+                'default' => 'right',
                 'style_transfer' => true,
                 'condition' => [
                     'show_badge' => 'yes'
@@ -543,10 +609,10 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'badge_text',
             [
-                'label' => __('Badge Text', 'xhub'),
+                'label' => esc_html__('Badge Text', 'xhub'),
                 'type' => Controls_Manager::TEXT,
-                'default' => __('Recommended', 'xhub'),
-                'placeholder' => __('Type badge text', 'xhub'),
+                'default' => esc_html__('Recommended', 'xhub'),
+                'placeholder' => esc_html__('Type badge text', 'xhub'),
                 'condition' => [
                     'show_badge' => 'yes'
                 ],
@@ -559,31 +625,32 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->end_controls_section();
     }
 
+    /**
+     * Register style controls for the widget.
+     */
     protected function register_style_controls()
     {
-
+        // General Style Section
         $this->start_controls_section(
             '_section_style_general',
             [
-                'label' => __('General', 'xhub'),
+                'label' => esc_html__('General', 'xhub'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
 
-
-
         $this->add_control(
             'text_color',
             [
-                'label' => __('Text Color', 'xhub'),
+                'label' => esc_html__('Text Color', 'xhub'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdevselement-pricing-table-title,'
-                        . '{{WRAPPER}} .bdevselement-pricing-table-currency,'
-                        . '{{WRAPPER}} .bdevselement-pricing-table-period,'
-                        . '{{WRAPPER}} .bdevselement-pricing-table-features-title,'
-                        . '{{WRAPPER}} .bdevselement-pricing-table-features-list li,'
-                        . '{{WRAPPER}} .bdevselement-pricing-table-price-text' => 'color: {{VALUE}};',
+                    . '{{WRAPPER}} .bdevselement-pricing-table-currency,'
+                    . '{{WRAPPER}} .bdevselement-pricing-table-period,'
+                    . '{{WRAPPER}} .bdevselement-pricing-table-features-title,'
+                    . '{{WRAPPER}} .bdevselement-pricing-table-features-list li,'
+                    . '{{WRAPPER}} .bdevselement-pricing-table-price-text' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -591,7 +658,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'price_shape_color',
             [
-                'label' => __('Shape Color', 'xhub'),
+                'label' => esc_html__('Shape Color', 'xhub'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .price__shape' => 'border-color: transparent {{VALUE}} transparent transparent;',
@@ -602,20 +669,57 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'price_border_color',
             [
-                'label' => __('Border Color', 'xhub'),
+                'label' => esc_html__('Border Color', 'xhub'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .price__item' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .pricing-item' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .pricing-three-item' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .pricing-two-item' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'pricing_table_background',
+                'label' => esc_html__('Background', 'xhub'),
+                'types' => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .pricing-item, {{WRAPPER}} .pricing-three-item, {{WRAPPER}} .pricing-two-item',
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'pricing_table_box_shadow',
+                'label' => esc_html__('Box Shadow', 'xhub'),
+                'selector' => '{{WRAPPER}} .pricing-item, {{WRAPPER}} .pricing-three-item, {{WRAPPER}} .pricing-two-item',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'pricing_table_border_radius',
+            [
+                'label' => esc_html__('Border Radius', 'xhub'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .pricing-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .pricing-three-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .pricing-two-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
 
         $this->end_controls_section();
 
+        // Header Style Section
         $this->start_controls_section(
             '_section_style_header',
             [
-                'label' => __('Header', 'xhub'),
+                'label' => esc_html__('Header', 'xhub'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -623,7 +727,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_responsive_control(
             'title_spacing',
             [
-                'label' => __('Bottom Spacing', 'xhub'),
+                'label' => esc_html__('Bottom Spacing', 'xhub'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'selectors' => [
@@ -635,7 +739,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'title_color',
             [
-                'label' => __('Title Color', 'xhub'),
+                'label' => esc_html__('Title Color', 'xhub'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdevselement-pricing-table-title' => 'color: {{VALUE}};',
@@ -648,7 +752,6 @@ class Xhub_Pricing_Table_New extends Widget_Base
             [
                 'name' => 'title_typography',
                 'selector' => '{{WRAPPER}} .bdevselement-pricing-table-title',
-                //'scheme' => Typography::TYPOGRAPHY_2,
             ]
         );
 
@@ -662,10 +765,11 @@ class Xhub_Pricing_Table_New extends Widget_Base
 
         $this->end_controls_section();
 
+        // Pricing Style Section
         $this->start_controls_section(
             '_section_style_pricing',
             [
-                'label' => __('Pricing', 'xhub'),
+                'label' => esc_html__('Pricing', 'xhub'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -674,14 +778,14 @@ class Xhub_Pricing_Table_New extends Widget_Base
             '_heading_price',
             [
                 'type' => Controls_Manager::HEADING,
-                'label' => __('Price', 'xhub'),
+                'label' => esc_html__('Price', 'xhub'),
             ]
         );
 
         $this->add_responsive_control(
             'price_spacing',
             [
-                'label' => __('Bottom Spacing', 'xhub'),
+                'label' => esc_html__('Bottom Spacing', 'xhub'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'selectors' => [
@@ -693,10 +797,12 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'price_color',
             [
-                'label' => __('Text Color', 'xhub'),
+                'label' => esc_html__('Text Color', 'xhub'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdevselement-pricing-table-price-text' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .pricing-three-price' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .price' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -705,8 +811,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'price_typography',
-                'selector' => '{{WRAPPER}} .bdevselement-pricing-table-price-text',
-                //'scheme' => Typography::TYPOGRAPHY_3,
+                'selector' => '{{WRAPPER}} .bdevselement-pricing-table-price-text, {{WRAPPER}} .pricing-three-price, {{WRAPPER}} .price',
             ]
         );
 
@@ -714,7 +819,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
             '_heading_currency',
             [
                 'type' => Controls_Manager::HEADING,
-                'label' => __('Currency', 'xhub'),
+                'label' => esc_html__('Currency', 'xhub'),
                 'separator' => 'before',
             ]
         );
@@ -722,7 +827,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_responsive_control(
             'currency_spacing',
             [
-                'label' => __('Side Spacing', 'xhub'),
+                'label' => esc_html__('Side Spacing', 'xhub'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'selectors' => [
@@ -734,10 +839,12 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'currency_color',
             [
-                'label' => __('Text Color', 'xhub'),
+                'label' => esc_html__('Text Color', 'xhub'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdevselement-pricing-table-currency' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .price sup' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .pricing-three-price' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -746,8 +853,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'currency_typography',
-                'selector' => '{{WRAPPER}} .bdevselement-pricing-table-currency',
-                //'scheme' => Typography::TYPOGRAPHY_3,
+                'selector' => '{{WRAPPER}} .bdevselement-pricing-table-currency, {{WRAPPER}} .price sup',
             ]
         );
 
@@ -755,7 +861,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
             '_heading_period',
             [
                 'type' => Controls_Manager::HEADING,
-                'label' => __('Period', 'xhub'),
+                'label' => esc_html__('Period', 'xhub'),
                 'separator' => 'before',
             ]
         );
@@ -763,7 +869,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_responsive_control(
             'period_spacing',
             [
-                'label' => __('Bottom Spacing', 'xhub'),
+                'label' => esc_html__('Bottom Spacing', 'xhub'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'selectors' => [
