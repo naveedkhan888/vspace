@@ -8,47 +8,18 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly (security measu
 class Xhub_Pricing_Table_New extends Widget_Base
 {
 
-    /**
-     * Get widget name.
-     *
-     * Retrieve Bdevs Element widget name.
-     *
-     * @return string Widget name.
-     * @since 1.0.0
-     * @access public
-     *
-     */
     public function get_name()
     {
-        return 'pricing_table_new';
+        return 'ipricingtablenew';
     }
 
-    /**
-     * Get widget title.
-     *
-     * @return string Widget title.
-     * @since 1.0.0
-     * @access public
-     *
-     */
+
     public function get_title()
     {
         return __('Pricing Table New', 'xhub');
     }
 
-    public function get_custom_help_url()
-    {
-        return 'http://elementor.bdevs.net//widgets/pricing-table/';
-    }
 
-    /**
-     * Get widget icon.
-     *
-     * @return string Widget icon.
-     * @since 1.0.0
-     * @access public
-     *
-     */
     public function get_icon()
     {
         return 'eicon-table-of-contents';
