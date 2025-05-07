@@ -1321,36 +1321,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
         return self::get_currency_symbol($settings['currency']);
     }
 
-    protected function render() {
-        $settings = $this->get_settings_for_display();
-        
-        // Add inline editing attributes
-        $this->add_inline_editing_attributes('title', 'basic');
-        $this->add_render_attribute('title', 'class', 'item_title');
-        
-        $this->add_inline_editing_attributes('sub_title', 'basic');
-        $this->add_render_attribute('sub_title', 'class', 'sub_title');
-        
-        $this->add_inline_editing_attributes('price', 'basic');
-        $this->add_render_attribute('price', 'class', 'pricing_text');
-        
-        $this->add_inline_editing_attributes('period', 'basic');
-        $this->add_render_attribute('period', 'class', 'price-period');
-        
-        $this->add_inline_editing_attributes('features_title', 'basic');
-        $this->add_render_attribute('features_title', 'class', 'price-featured mb-20');
-
-        // Get currency symbol
-        $currency = $this->get_currency_html($settings);
-
-        // Determine which template style to use
-        $this->render_pricing_table($settings, $currency);
-    }
-
-    /**
-     * Render pricing table based on design style.
-     *
-     */
+    
 
     /**
      * Render the widget output on the frontend.
