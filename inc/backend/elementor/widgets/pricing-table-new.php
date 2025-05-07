@@ -1250,20 +1250,20 @@ class Xhub_Pricing_Table_New extends Widget_Base
                 <div class="pricing-two-content">
 
                     <?php if ($settings['title']) : ?>
-                        <h3 class="title bdevselement-pricing-table-title"><?php echo bdevs_element_kses_basic($settings['title']); ?></h3>
+                        <h3 class="title bdevselement-pricing-table-title"><?php echo wp_kses($settings['title']); ?></h3>
                     <?php endif; ?>
                     <?php if ($settings['sub_title']) : ?>
-                        <p><?php echo bdevs_element_kses_basic($settings['sub_title']); ?></p>
+                        <p><?php echo wp_kses($settings['sub_title']); ?></p>
                     <?php endif; ?>
 
                     <h3 class="price bdevselement-pricing-table-period">
                         <sup><?php echo esc_html($currency); ?></sup>
-                        <?php echo bdevs_element_kses_basic($settings['price']); ?>
-                        <span><?php echo bdevs_element_kses_basic($settings['period_from']); ?> <br> <?php echo bdevs_element_kses_basic($settings['period']); ?></span>
+                        <?php echo wp_kses($settings['price']); ?>
+                        <span><?php echo wp_kses($settings['period_from']); ?> <br> <?php echo wp_kses($settings['period']); ?></span>
                     </h3>
                     <?php if (!empty($settings['button_text'])) : ?>
                         <div class="pricing-btn">
-                            <a href="<?php echo esc_url($settings['button_link']['url']); ?>" class="btn s-btn btn-link bdevselement-pricing-table-btn"><?php echo bdevs_element_kses_basic($settings['button_text']); ?></a>
+                            <a href="<?php echo esc_url($settings['button_link']['url']); ?>" class="btn s-btn btn-link bdevselement-pricing-table-btn"><?php echo wp_kses($settings['button_text']); ?></a>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -1278,11 +1278,11 @@ class Xhub_Pricing_Table_New extends Widget_Base
             <div class="pricing-three-item mb-30 <?php print esc_attr($class_name); ?>">
                 <div class="pricing-three-head">
                     <?php if ($settings['title']) : ?>
-                        <h4 class="title bdevselement-pricing-table-title"><?php echo bdevs_element_kses_basic($settings['title']); ?></h4>
+                        <h4 class="title bdevselement-pricing-table-title"><?php echo wp_kses($settings['title']); ?></h4>
                     <?php endif; ?>
 
                     <?php if ($settings['sub_title']) : ?>
-                        <span class="devices-support"><?php echo bdevs_element_kses_basic($settings['sub_title']); ?></span>
+                        <span class="devices-support"><?php echo wp_kses($settings['sub_title']); ?></span>
                     <?php endif; ?>
 
 
@@ -1302,7 +1302,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
                             <?php foreach ($settings['features_list'] as $index => $feature) : ?>
                                 <li><?php if (!empty($feature['icon']) || !empty($feature['selected_icon']['value'])) :
                                         bdevs_element_render_icon($feature, 'icon', 'selected_icon');
-                                    endif; ?><?php echo bdevs_element_kses_intermediate($feature['text']); ?></li>
+                                    endif; ?><?php echo wp_kses($feature['text']); ?></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
@@ -1310,13 +1310,13 @@ class Xhub_Pricing_Table_New extends Widget_Base
 
                 <h2 class="pricing-three-price bdevselement-pricing-table-period">
                     <?php if (!empty($settings['period_from'])) : ?>
-                        <span><?php echo bdevs_element_kses_basic($settings['period_from']); ?></span>
+                        <span><?php echo wp_kses($settings['period_from']); ?></span>
                     <?php endif; ?>
-                    <?php echo esc_html($currency); ?><?php echo bdevs_element_kses_basic($settings['price']); ?>
-                    <span><?php echo bdevs_element_kses_basic($settings['period']); ?></span>
+                    <?php echo esc_html($currency); ?><?php echo wp_kses($settings['price']); ?>
+                    <span><?php echo wp_kses($settings['period']); ?></span>
                 </h2>
                 <?php if (!empty($settings['button_text'])) : ?>
-                    <a href="<?php echo esc_url($settings['button_link']['url']); ?>" class="btn s-btn transparent-btn bdevselement-pricing-table-btn"><?php echo bdevs_element_kses_basic($settings['button_text']); ?></a>
+                    <a href="<?php echo esc_url($settings['button_link']['url']); ?>" class="btn s-btn transparent-btn bdevselement-pricing-table-btn"><?php echo wp_kses($settings['button_text']); ?></a>
                 <?php endif; ?>
             </div>
 
@@ -1339,11 +1339,11 @@ class Xhub_Pricing_Table_New extends Widget_Base
                     <?php endif; ?>
 
                     <?php if ($settings['title']) : ?>
-                        <h3 class="title bdevselement-pricing-table-title"><?php echo bdevs_element_kses_basic($settings['title']); ?></h3>
+                        <h3 class="title bdevselement-pricing-table-title"><?php echo wp_kses($settings['title']); ?></h3>
                     <?php endif; ?>
                     <div class="net-speed">
                         <?php if (!empty($settings['sub_title'])) : ?>
-                            <h5><?php echo bdevs_element_kses_basic($settings['sub_title']); ?> <span><?php echo bdevs_element_kses_basic($settings['description']); ?></span></h5>
+                            <h5><?php echo wp_kses($settings['sub_title']); ?> <span><?php echo wp_kses($settings['description']); ?></span></h5>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -1354,7 +1354,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
                                 <li>
                                     <?php if (!empty($feature['icon']) || !empty($feature['selected_icon']['value'])) :
                                         bdevs_element_render_icon($feature, 'icon', 'selected_icon');
-                                    endif; ?> <?php echo bdevs_element_kses_intermediate($feature['text']); ?>
+                                    endif; ?> <?php echo wp_kses($feature['text']); ?>
 
                                 </li>
                             <?php endforeach; ?>
@@ -1362,13 +1362,13 @@ class Xhub_Pricing_Table_New extends Widget_Base
                     <?php endif; ?>
                     <div class="price-wrap">
                         <?php if (!empty($settings['period_from'])) : ?>
-                            <span><?php echo bdevs_element_kses_basic($settings['period_from']); ?></span>
+                            <span><?php echo wp_kses($settings['period_from']); ?></span>
                         <?php endif; ?>
-                        <h3 class="price bdevselement-pricing-table-period"><?php echo esc_html($currency); ?><?php echo bdevs_element_kses_basic($settings['price']); ?><sub><?php echo bdevs_element_kses_basic($settings['period']); ?></sub></h3>
+                        <h3 class="price bdevselement-pricing-table-period"><?php echo esc_html($currency); ?><?php echo wp_kses($settings['price']); ?><sub><?php echo wp_kses($settings['period']); ?></sub></h3>
                     </div>
                     <?php if (!empty($settings['button_text'])) : ?>
                         <div class="pricing-btn">
-                            <a href="<?php echo esc_url($settings['button_link']['url']); ?>" class="btn s-btn btn-link bdevselement-pricing-table-btn"><?php echo bdevs_element_kses_basic($settings['button_text']); ?></a>
+                            <a href="<?php echo esc_url($settings['button_link']['url']); ?>" class="btn s-btn btn-link bdevselement-pricing-table-btn"><?php echo wp_kses($settings['button_text']); ?></a>
                         </div>
                     <?php endif; ?>
                 </div>
