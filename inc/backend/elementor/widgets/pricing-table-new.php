@@ -1188,11 +1188,11 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_inline_editing_attributes('features_title', 'basic');
         $this->add_render_attribute('features_title', 'class', 'price-featured mb-20');
 
-        if ($settings['currency'] === 'custom') {
-            $currency = $settings['currency_custom'];
-        } else {
-            $currency = self::get_currency_symbol($settings['currency']);
-        }
+		if (isset($settings['currency']) && $settings['currency'] === 'custom') {
+		    $currency = $settings['currency_custom'] ?? '';
+		} else {
+		    $currency = isset($settings['currency']) ? self::get_currency_symbol($settings['currency']) : '';
+		}
 
 ?>
         <?php if ($settings['design_style'] === 'style_3') : ?>
