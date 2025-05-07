@@ -1292,9 +1292,9 @@ class Xhub_Pricing_Table_New extends Widget_Base
                         <?php Icons_Manager::render_icon($settings, 'icon', 'selected_icon'); ?>
                     <?php endif; ?>
 
-                    <?php if ($settings['title']) : ?>
-                        <h3 class="title bdevselement-pricing-table-title"><?php echo wp_kses($settings['title']); ?></h3>
-                    <?php endif; ?>
+                    <?php if (isset($settings['title']) && $settings['title']) : ?>
+					    <h3 class="title bdevselement-pricing-table-title"><?php echo wp_kses($settings['title']); ?></h3>
+					<?php endif; ?>
                     <div class="net-speed">
                         <?php if (!empty($settings['sub_title'])) : ?>
                             <h5><?php echo wp_kses($settings['sub_title']); ?> <span><?php echo wp_kses($settings['description']); ?></span></h5>
@@ -1318,7 +1318,11 @@ class Xhub_Pricing_Table_New extends Widget_Base
                         <?php if (!empty($settings['period_from'])) : ?>
                             <span><?php echo wp_kses($settings['period_from']); ?></span>
                         <?php endif; ?>
-                        <h3 class="price bdevselement-pricing-table-period"><?php echo esc_html($currency); ?><?php echo wp_kses($settings['price']); ?><sub><?php echo wp_kses($settings['period']); ?></sub></h3>
+                        <h3 class="price bdevselement-pricing-table-period">
+						    <?php echo esc_html($currency); ?>
+						    <?php echo isset($settings['price']) ? wp_kses($settings['price']) : ''; ?>
+						    <sub><?php echo isset($settings['period']) ? wp_kses($settings['period']) : ''; ?></sub>
+						</h3>
                     </div>
                     <?php if (!empty($settings['button_text'])) : ?>
                         <div class="pricing-btn">
