@@ -5,14 +5,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly (security measu
 /**
  * Widget Name: Pricing Table New
  * Description: A premium pricing table widget for Elementor with multiple styles and customization options
- * @since 1.0.0
  */
 class Xhub_Pricing_Table_New extends Widget_Base
 {
     /**
      * Get widget name.
      *
-     * @return string Widget name.
      */
     public function get_name()
     {
@@ -22,7 +20,6 @@ class Xhub_Pricing_Table_New extends Widget_Base
     /**
      * Get widget title.
      *
-     * @return string Widget title.
      */
     public function get_title()
     {
@@ -32,7 +29,6 @@ class Xhub_Pricing_Table_New extends Widget_Base
     /**
      * Get widget icon.
      *
-     * @return string Widget icon.
      */
     public function get_icon()
     {
@@ -42,7 +38,6 @@ class Xhub_Pricing_Table_New extends Widget_Base
     /**
      * Get widget categories.
      *
-     * @return array Widget categories.
      */
     public function get_categories()
     {
@@ -52,7 +47,6 @@ class Xhub_Pricing_Table_New extends Widget_Base
     /**
      * Get widget keywords.
      *
-     * @return array Widget keywords.
      */
     public function get_keywords()
     {
@@ -903,8 +897,6 @@ class Xhub_Pricing_Table_New extends Widget_Base
     /**
      * Add controls for features styling.
      *
-     * @since 1.0.0
-     * @access protected
      */
     protected function add_features_style_controls() {
         $this->start_controls_section(
@@ -1022,8 +1014,6 @@ class Xhub_Pricing_Table_New extends Widget_Base
     /**
      * Add controls for footer styling.
      *
-     * @since 1.0.0
-     * @access protected
      */
     protected function add_footer_style_controls() {
         $this->start_controls_section(
@@ -1203,8 +1193,6 @@ class Xhub_Pricing_Table_New extends Widget_Base
     /**
      * Add controls for badge styling.
      *
-     * @since 1.0.0
-     * @access protected
      */
     protected function add_badge_style_controls() {
         $this->start_controls_section(
@@ -1296,15 +1284,6 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->end_controls_section();
     }
 
-    /**
-     * Get currency symbol.
-     *
-     * @param string $symbol_name Currency symbol name.
-     * @return string Currency symbol.
-     * @since 1.0.0
-     * @access private
-     * @static
-     */
     private static function get_currency_symbol($symbol_name) {
         $symbols = [
             'baht' => '&#3647;',
@@ -1330,14 +1309,6 @@ class Xhub_Pricing_Table_New extends Widget_Base
         return isset($symbols[$symbol_name]) ? $symbols[$symbol_name] : '';
     }
 
-    /**
-     * Get currency HTML.
-     *
-     * @param array $settings Widget settings.
-     * @return string Currency HTML.
-     * @since 1.0.0
-     * @access protected
-     */
     protected function get_currency_html($settings) {
         if (empty($settings['currency'])) {
             return '';
@@ -1350,12 +1321,6 @@ class Xhub_Pricing_Table_New extends Widget_Base
         return self::get_currency_symbol($settings['currency']);
     }
 
-    /**
-     * Render pricing table widget output on the frontend.
-     *
-     * @since 1.0.0
-     * @access protected
-     */
     protected function render() {
         $settings = $this->get_settings_for_display();
         
@@ -1385,10 +1350,6 @@ class Xhub_Pricing_Table_New extends Widget_Base
     /**
      * Render pricing table based on design style.
      *
-     * @param array $settings Widget settings.
-     * @param string $currency Currency symbol.
-     * @since 1.0.0
-     * @access protected
      */
 
     /**
@@ -1439,8 +1400,6 @@ class Xhub_Pricing_Table_New extends Widget_Base
     /**
      * Render Style 3 template
      *
-     * @param array  $settings Widget settings.
-     * @param string $currency Currency symbol.
      */
     private function render_style_3($settings, $currency) {
         ?>
@@ -1479,8 +1438,6 @@ class Xhub_Pricing_Table_New extends Widget_Base
     /**
      * Render Style 2 template
      *
-     * @param array  $settings Widget settings.
-     * @param string $currency Currency symbol.
      */
     private function render_style_2($settings, $currency) {
         $class_name = !empty($settings['active_price']) ? 'active' : '';
@@ -1548,8 +1505,6 @@ class Xhub_Pricing_Table_New extends Widget_Base
     /**
      * Render Style 1 (default) template
      *
-     * @param array  $settings Widget settings.
-     * @param string $currency Currency symbol.
      */
     private function render_style_1($settings, $currency) {
         $class_name = !empty($settings['active_price']) ? 'active' : '';
