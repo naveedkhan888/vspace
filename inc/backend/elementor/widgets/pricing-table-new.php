@@ -141,37 +141,22 @@ class Xhub_Pricing_Table_New extends Widget_Base
             ]
         );
 
-        if (bdevs_element_is_elementor_version('<', '2.6.0')) {
-            $this->add_control(
-                'icon',
-                [
-                    'label' => __('Icon', 'xhub'),
-                    'label_block' => true,
-                    'type' => Controls_Manager::ICON,
-                    'options' => bdevs_element_get_bdevs_element_icons(),
-                    'default' => 'fa fa-smile-o',
-                    'condition' => [
-                        'type' => 'icon'
-                    ]
-                ]
-            );
-        } else {
-            $this->add_control(
-                'selected_icon',
-                [
-                    'type' => Controls_Manager::ICONS,
-                    'fa4compatibility' => 'icon',
-                    'label_block' => true,
-                    'default' => [
-                        'value' => 'fas fa-smile-wink',
-                        'library' => 'fa-solid',
-                    ],
-                    'condition' => [
-                        'type' => 'icon'
-                    ]
-                ]
-            );
-        }
+        $this->add_control(
+		    'selected_icon',
+		    [
+		        'type' => Controls_Manager::ICONS,
+		        'fa4compatibility' => 'icon',
+		        'label' => __('Icon', 'xhub'),
+		        'label_block' => true,
+		        'default' => [
+		            'value' => 'fas fa-smile-wink',
+		            'library' => 'fa-solid',
+		        ],
+		        'condition' => [
+		            'type' => 'icon'
+		        ]
+		    ]
+		);
 
         $this->end_controls_section();
 
@@ -254,44 +239,27 @@ class Xhub_Pricing_Table_New extends Widget_Base
 
         $repeater = new Repeater();
 
-        if (bdevs_element_is_elementor_version('<', '2.6.0')) {
-            $repeater->add_control(
-                'icon_2',
-                [
-                    'label' => __('Icon', 'xhub'),
-                    'type' => Controls_Manager::ICON,
-                    'label_block' => false,
-                    'options' => bdevs_element_get_bdevs_element_icons(),
-                    'default' => 'fa fa-check',
-                    'include' => [
-                        'fa fa-check',
-                        'fa fa-close',
-                    ]
-                ]
-            );
-        } else {
-            $repeater->add_control(
-                'selected_icon_2',
-                [
-                    'label' => __('Icon', 'xhub'),
-                    'type' => Controls_Manager::ICONS,
-                    'fa4compatibility' => 'icon',
-                    'default' => [
-                        'value' => 'fas fa-check',
-                        'library' => 'fa-solid',
-                    ],
-                    'recommended' => [
-                        'fa-regular' => [
-                            'check-square',
-                            'window-close',
-                        ],
-                        'fa-solid' => [
-                            'check',
-                        ]
-                    ]
-                ]
-            );
-        }
+        $repeater->add_control(
+		    'selected_icon_2',
+		    [
+		        'label' => __('Icon', 'xhub'),
+		        'type' => Controls_Manager::ICONS,
+		        'fa4compatibility' => 'icon',
+		        'default' => [
+		            'value' => 'fas fa-check',
+		            'library' => 'fa-solid',
+		        ],
+		        'recommended' => [
+		            'fa-regular' => [
+		                'check-square',
+		                'window-close',
+		            ],
+		            'fa-solid' => [
+		                'check',
+		            ]
+		        ]
+		    ]
+		);
 
         $this->add_control(
             'devices',
@@ -433,44 +401,28 @@ class Xhub_Pricing_Table_New extends Widget_Base
             ]
         );
 
-        if (bdevs_element_is_elementor_version('<', '2.6.0')) {
-            $repeater->add_control(
-                'icon',
-                [
-                    'label' => __('Icon', 'xhub'),
-                    'type' => Controls_Manager::ICON,
-                    'label_block' => false,
-                    'options' => bdevs_element_get_bdevs_element_icons(),
-                    'default' => 'fa fa-check',
-                    'include' => [
-                        'fa fa-check',
-                        'fa fa-close',
-                    ]
-                ]
-            );
-        } else {
-            $repeater->add_control(
-                'selected_icon',
-                [
-                    'label' => __('Icon', 'xhub'),
-                    'type' => Controls_Manager::ICONS,
-                    'fa4compatibility' => 'icon',
-                    'default' => [
-                        'value' => 'fas fa-check',
-                        'library' => 'fa-solid',
-                    ],
-                    'recommended' => [
-                        'fa-regular' => [
-                            'check-square',
-                            'window-close',
-                        ],
-                        'fa-solid' => [
-                            'check',
-                        ]
-                    ]
-                ]
-            );
-        }
+        $repeater->add_control(
+		    'selected_icon',
+		    [
+		        'label' => __('Icon', 'xhub'),
+		        'type' => Controls_Manager::ICONS,
+		        'fa4compatibility' => 'icon',
+		        'default' => [
+		            'value' => 'fas fa-check',
+		            'library' => 'fa-solid',
+		        ],
+		        'recommended' => [
+		            'fa-regular' => [
+		                'check-square',
+		                'window-close',
+		            ],
+		            'fa-solid' => [
+		                'check',
+		            ]
+		        ]
+		    ]
+		);
+
 
         $this->add_control(
             'features_list',
