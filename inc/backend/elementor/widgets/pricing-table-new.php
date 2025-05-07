@@ -881,7 +881,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'period_color',
             [
-                'label' => __('Text Color', 'xhub'),
+                'label' => esc_html__('Text Color', 'xhub'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdevselement-pricing-table-period' => 'color: {{VALUE}};',
@@ -894,24 +894,32 @@ class Xhub_Pricing_Table_New extends Widget_Base
             [
                 'name' => 'period_typography',
                 'selector' => '{{WRAPPER}} .bdevselement-pricing-table-period',
-                //'scheme' => Typography::TYPOGRAPHY_3,
             ]
         );
 
         $this->end_controls_section();
+    }
 
+    /**
+     * Add controls for features styling.
+     *
+     * @since 1.0.0
+     * @access protected
+     */
+    protected function add_features_style_controls() {
         $this->start_controls_section(
             '_section_style_features',
             [
-                'label' => __('Features', 'xhub'),
+                'label' => esc_html__('Features', 'xhub'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
 
+        // Container Spacing
         $this->add_responsive_control(
             'features_container_spacing',
             [
-                'label' => __('Container Bottom Spacing', 'xhub'),
+                'label' => esc_html__('Container Bottom Spacing', 'xhub'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'selectors' => [
@@ -920,19 +928,21 @@ class Xhub_Pricing_Table_New extends Widget_Base
             ]
         );
 
+        // Features Title Heading
         $this->add_control(
             '_heading_features_title',
             [
                 'type' => Controls_Manager::HEADING,
-                'label' => __('Title', 'xhub'),
+                'label' => esc_html__('Title', 'xhub'),
                 'separator' => 'before',
             ]
         );
 
+        // Title Bottom Spacing
         $this->add_responsive_control(
             'features_title_spacing',
             [
-                'label' => __('Bottom Spacing', 'xhub'),
+                'label' => esc_html__('Bottom Spacing', 'xhub'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'selectors' => [
@@ -941,10 +951,11 @@ class Xhub_Pricing_Table_New extends Widget_Base
             ]
         );
 
+        // Title Text Color
         $this->add_control(
             'features_title_color',
             [
-                'label' => __('Text Color', 'xhub'),
+                'label' => esc_html__('Text Color', 'xhub'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdevselement-pricing-table-features-title' => 'color: {{VALUE}};',
@@ -952,28 +963,30 @@ class Xhub_Pricing_Table_New extends Widget_Base
             ]
         );
 
+        // Title Typography
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
                 'name' => 'features_title_typography',
                 'selector' => '{{WRAPPER}} .bdevselement-pricing-table-features-title',
-                //'scheme' => Typography::TYPOGRAPHY_2,
             ]
         );
 
+        // Features List Heading
         $this->add_control(
             '_heading_features_list',
             [
                 'type' => Controls_Manager::HEADING,
-                'label' => __('List', 'xhub'),
+                'label' => esc_html__('List', 'xhub'),
                 'separator' => 'before',
             ]
         );
 
+        // List Item Spacing
         $this->add_responsive_control(
             'features_list_spacing',
             [
-                'label' => __('Spacing Between', 'xhub'),
+                'label' => esc_html__('Spacing Between', 'xhub'),
                 'type' => Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'selectors' => [
@@ -982,10 +995,11 @@ class Xhub_Pricing_Table_New extends Widget_Base
             ]
         );
 
+        // List Item Text Color
         $this->add_control(
             'features_list_color',
             [
-                'label' => __('Text Color', 'xhub'),
+                'label' => esc_html__('Text Color', 'xhub'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdevselement-pricing-table-features-list > li' => 'color: {{VALUE}};',
@@ -993,37 +1007,47 @@ class Xhub_Pricing_Table_New extends Widget_Base
             ]
         );
 
+        // List Item Typography
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
                 'name' => 'features_list_typography',
                 'selector' => '{{WRAPPER}} .bdevselement-pricing-table-features-list > li',
-                //'scheme' => Typography::TYPOGRAPHY_3,
             ]
         );
 
         $this->end_controls_section();
+    }
 
+    /**
+     * Add controls for footer styling.
+     *
+     * @since 1.0.0
+     * @access protected
+     */
+    protected function add_footer_style_controls() {
         $this->start_controls_section(
             '_section_style_footer',
             [
-                'label' => __('Footer', 'xhub'),
+                'label' => esc_html__('Footer', 'xhub'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
 
+        // Button Heading
         $this->add_control(
             '_heading_button',
             [
                 'type' => Controls_Manager::HEADING,
-                'label' => __('Button', 'xhub'),
+                'label' => esc_html__('Button', 'xhub'),
             ]
         );
 
+        // Button Padding
         $this->add_responsive_control(
             'button_padding',
             [
-                'label' => __('Padding', 'xhub'),
+                'label' => esc_html__('Padding', 'xhub'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -1032,6 +1056,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
             ]
         );
 
+        // Button Border
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
@@ -1040,10 +1065,11 @@ class Xhub_Pricing_Table_New extends Widget_Base
             ]
         );
 
+        // Button Border Radius
         $this->add_control(
             'button_border_radius',
             [
-                'label' => __('Border Radius', 'xhub'),
+                'label' => esc_html__('Border Radius', 'xhub'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [
@@ -1052,6 +1078,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
             ]
         );
 
+        // Button Box Shadow
         $this->add_group_control(
             Group_Control_Box_Shadow::get_type(),
             [
@@ -1060,15 +1087,16 @@ class Xhub_Pricing_Table_New extends Widget_Base
             ]
         );
 
+        // Button Typography
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
                 'name' => 'button_typography',
                 'selector' => '{{WRAPPER}} .bdevselement-pricing-table-btn',
-                //'scheme' => Typography::TYPOGRAPHY_4,
             ]
         );
 
+        // Divider
         $this->add_control(
             'hr',
             [
@@ -1077,19 +1105,21 @@ class Xhub_Pricing_Table_New extends Widget_Base
             ]
         );
 
+        // Button State Tabs
         $this->start_controls_tabs('_tabs_button');
 
+        // Normal Tab
         $this->start_controls_tab(
             '_tab_button_normal',
             [
-                'label' => __('Normal', 'xhub'),
+                'label' => esc_html__('Normal', 'xhub'),
             ]
         );
 
         $this->add_control(
             'button_color',
             [
-                'label' => __('Text Color', 'xhub'),
+                'label' => esc_html__('Text Color', 'xhub'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdevselement-pricing-table-btn' => 'color: {{VALUE}};',
@@ -1100,7 +1130,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'button_bg_color',
             [
-                'label' => __('Background Color', 'xhub'),
+                'label' => esc_html__('Background Color', 'xhub'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdevselement-pricing-table-btn' => 'background-color: {{VALUE}};',
@@ -1110,17 +1140,18 @@ class Xhub_Pricing_Table_New extends Widget_Base
 
         $this->end_controls_tab();
 
+        // Hover Tab
         $this->start_controls_tab(
             '_tab_button_hover',
             [
-                'label' => __('Hover', 'xhub'),
+                'label' => esc_html__('Hover', 'xhub'),
             ]
         );
 
         $this->add_control(
             'button_hover_color',
             [
-                'label' => __('Text Color', 'xhub'),
+                'label' => esc_html__('Text Color', 'xhub'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdevselement-pricing-table-btn:hover, {{WRAPPER}} .bdevselement-pricing-table-btn:focus' => 'color: {{VALUE}};',
@@ -1131,7 +1162,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'button_hover_bg_color',
             [
-                'label' => __('Background Color', 'xhub'),
+                'label' => esc_html__('Background Color', 'xhub'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdevselement-pricing-table-btn:hover, {{WRAPPER}} .bdevselement-pricing-table-btn:focus' => 'background-color: {{VALUE}};',
@@ -1142,7 +1173,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'button_hover_before_bg_color',
             [
-                'label' => __('Hover Before BG Color', 'xhub'),
+                'label' => esc_html__('Hover Before BG Color', 'xhub'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .s-btn.transparent-btn.bdevs-el-btn:hover:before, {{WRAPPER}} .s-btn.transparent-btn.bdevs-el-btn:focus:before' => 'background-color: {{VALUE}};',
@@ -1153,7 +1184,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->add_control(
             'button_hover_border_color',
             [
-                'label' => __('Border Color', 'xhub'),
+                'label' => esc_html__('Border Color', 'xhub'),
                 'type' => Controls_Manager::COLOR,
                 'condition' => [
                     'button_border_border!' => '',
@@ -1167,19 +1198,28 @@ class Xhub_Pricing_Table_New extends Widget_Base
         $this->end_controls_tab();
         $this->end_controls_tabs();
         $this->end_controls_section();
+    }
 
+    /**
+     * Add controls for badge styling.
+     *
+     * @since 1.0.0
+     * @access protected
+     */
+    protected function add_badge_style_controls() {
         $this->start_controls_section(
             '_section_style_badge',
             [
-                'label' => __('Badge', 'xhub'),
+                'label' => esc_html__('Badge', 'xhub'),
                 'tab' => Controls_Manager::TAB_STYLE,
             ]
         );
 
+        // Badge Padding
         $this->add_responsive_control(
             'badge_padding',
             [
-                'label' => __('Padding', 'xhub'),
+                'label' => esc_html__('Padding', 'xhub'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -1188,10 +1228,11 @@ class Xhub_Pricing_Table_New extends Widget_Base
             ]
         );
 
+        // Badge Text Color
         $this->add_control(
             'badge_color',
             [
-                'label' => __('Text Color', 'xhub'),
+                'label' => esc_html__('Text Color', 'xhub'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdevselement-pricing-table-badge' => 'color: {{VALUE}};',
@@ -1199,10 +1240,11 @@ class Xhub_Pricing_Table_New extends Widget_Base
             ]
         );
 
+        // Badge Background Color
         $this->add_control(
             'badge_bg_color',
             [
-                'label' => __('Background Color', 'xhub'),
+                'label' => esc_html__('Background Color', 'xhub'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .bdevselement-pricing-table-badge' => 'background-color: {{VALUE}};',
@@ -1210,6 +1252,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
             ]
         );
 
+        // Badge Border
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
@@ -1218,10 +1261,11 @@ class Xhub_Pricing_Table_New extends Widget_Base
             ]
         );
 
+        // Badge Border Radius
         $this->add_responsive_control(
             'badge_border_radius',
             [
-                'label' => __('Border Radius', 'xhub'),
+                'label' => esc_html__('Border Radius', 'xhub'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [
@@ -1230,6 +1274,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
             ]
         );
 
+        // Badge Box Shadow
         $this->add_group_control(
             Group_Control_Box_Shadow::get_type(),
             [
@@ -1238,21 +1283,29 @@ class Xhub_Pricing_Table_New extends Widget_Base
             ]
         );
 
+        // Badge Typography
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             [
                 'name' => 'badge_typography',
-                'label' => __('Typography', 'xhub'),
+                'label' => esc_html__('Typography', 'xhub'),
                 'selector' => '{{WRAPPER}} .bdevselement-pricing-table-badge',
-                //'scheme' => Typography::TYPOGRAPHY_3,
             ]
         );
 
         $this->end_controls_section();
     }
 
-    private static function get_currency_symbol($symbol_name)
-    {
+    /**
+     * Get currency symbol.
+     *
+     * @param string $symbol_name Currency symbol name.
+     * @return string Currency symbol.
+     * @since 1.0.0
+     * @access private
+     * @static
+     */
+    private static function get_currency_symbol($symbol_name) {
         $symbols = [
             'baht' => '&#3647;',
             'bdt' => '&#2547;',
@@ -1277,172 +1330,302 @@ class Xhub_Pricing_Table_New extends Widget_Base
         return isset($symbols[$symbol_name]) ? $symbols[$symbol_name] : '';
     }
 
-    protected function render()
-    {
+    /**
+     * Get currency HTML.
+     *
+     * @param array $settings Widget settings.
+     * @return string Currency HTML.
+     * @since 1.0.0
+     * @access protected
+     */
+    protected function get_currency_html($settings) {
+        if (empty($settings['currency'])) {
+            return '';
+        }
+
+        if ($settings['currency'] === 'custom') {
+            return isset($settings['currency_custom']) ? $settings['currency_custom'] : '';
+        }
+
+        return self::get_currency_symbol($settings['currency']);
+    }
+
+    /**
+     * Render pricing table widget output on the frontend.
+     *
+     * @since 1.0.0
+     * @access protected
+     */
+    protected function render() {
         $settings = $this->get_settings_for_display();
-        extract($settings);
+        
+        // Add inline editing attributes
         $this->add_inline_editing_attributes('title', 'basic');
         $this->add_render_attribute('title', 'class', 'item_title');
+        
+        $this->add_inline_editing_attributes('sub_title', 'basic');
         $this->add_render_attribute('sub_title', 'class', 'sub_title');
-
+        
         $this->add_inline_editing_attributes('price', 'basic');
         $this->add_render_attribute('price', 'class', 'pricing_text');
-
+        
         $this->add_inline_editing_attributes('period', 'basic');
         $this->add_render_attribute('period', 'class', 'price-period');
-
+        
         $this->add_inline_editing_attributes('features_title', 'basic');
         $this->add_render_attribute('features_title', 'class', 'price-featured mb-20');
 
-		if (isset($settings['currency']) && $settings['currency'] === 'custom') {
-		    $currency = $settings['currency_custom'] ?? '';
-		} else {
-		    $currency = isset($settings['currency']) ? self::get_currency_symbol($settings['currency']) : '';
-		}
+        // Get currency symbol
+        $currency = $this->get_currency_html($settings);
 
-?>
-        <?php if (isset($settings['design_style']) && $settings['design_style'] === 'style_3') : ?>
+        // Determine which template style to use
+        $this->render_pricing_table($settings, $currency);
+    }
 
+    /**
+     * Render pricing table based on design style.
+     *
+     * @param array $settings Widget settings.
+     * @param string $currency Currency symbol.
+     * @since 1.0.0
+     * @access protected
+     */
 
-            <div class="pricing-two-item">
-                <div class="pricing-two-content">
+    /**
+     * Render the widget output on the frontend.
+     */
+    protected function render() {
+        $settings = $this->get_settings_for_display();
+        
+        // Add editing attributes and CSS classes
+        $this->add_inline_editing_attributes('title', 'basic');
+        $this->add_render_attribute('title', 'class', 'item_title');
+        $this->add_render_attribute('sub_title', 'class', 'sub_title');
+        $this->add_inline_editing_attributes('price', 'basic');
+        $this->add_render_attribute('price', 'class', 'pricing_text');
+        $this->add_inline_editing_attributes('period', 'basic');
+        $this->add_render_attribute('period', 'class', 'price-period');
+        $this->add_inline_editing_attributes('features_title', 'basic');
+        $this->add_render_attribute('features_title', 'class', 'price-featured mb-20');
 
-                    <?php if ($settings['title']) : ?>
-                        <h3 class="title bdevselement-pricing-table-title"><?php echo wp_kses($settings['title']); ?></h3>
-                    <?php endif; ?>
-                    <?php if ($settings['sub_title']) : ?>
-                        <p><?php echo wp_kses($settings['sub_title']); ?></p>
-                    <?php endif; ?>
+        // Get currency symbol
+        $currency = '';
+        if (isset($settings['currency'])) {
+            if ($settings['currency'] === 'custom') {
+                $currency = $settings['currency_custom'] ?? '';
+            } else {
+                $currency = self::get_currency_symbol($settings['currency']);
+            }
+        }
 
-                    <h3 class="price bdevselement-pricing-table-period">
-                        <sup><?php echo esc_html($currency); ?></sup>
-                        <?php echo wp_kses($settings['price']); ?>
-                        <span><?php echo wp_kses($settings['period_from']); ?> <br> <?php echo wp_kses($settings['period']); ?></span>
-                    </h3>
-                    <?php if (!empty($settings['button_text'])) : ?>
-                        <div class="pricing-btn">
-                            <a href="<?php echo esc_url($settings['button_link']['url']); ?>" class="btn s-btn btn-link bdevselement-pricing-table-btn"><?php echo wp_kses($settings['button_text']); ?></a>
-                        </div>
-                    <?php endif; ?>
-                </div>
+        // Determine which template to render based on design style
+        if (isset($settings['design_style'])) {
+            switch ($settings['design_style']) {
+                case 'style_3':
+                    $this->render_style_3($settings, $currency);
+                    break;
+                case 'style_2':
+                    $this->render_style_2($settings, $currency);
+                    break;
+                default:
+                    $this->render_style_1($settings, $currency);
+                    break;
+            }
+        } else {
+            $this->render_style_1($settings, $currency);
+        }
+    }
+
+    /**
+     * Render Style 3 template
+     *
+     * @param array  $settings Widget settings.
+     * @param string $currency Currency symbol.
+     */
+    private function render_style_3($settings, $currency) {
+        ?>
+        <div class="pricing-two-item">
+            <div class="pricing-two-content">
+                <?php if (!empty($settings['title'])) : ?>
+                    <h3 class="title bdevselement-pricing-table-title"><?php echo wp_kses_post($settings['title']); ?></h3>
+                <?php endif; ?>
+                
+                <?php if (!empty($settings['sub_title'])) : ?>
+                    <p><?php echo wp_kses_post($settings['sub_title']); ?></p>
+                <?php endif; ?>
+
+                <h3 class="price bdevselement-pricing-table-period">
+                    <sup><?php echo esc_html($currency); ?></sup>
+                    <?php echo wp_kses_post($settings['price'] ?? ''); ?>
+                    <span>
+                        <?php echo wp_kses_post($settings['period_from'] ?? ''); ?> <br> 
+                        <?php echo wp_kses_post($settings['period'] ?? ''); ?>
+                    </span>
+                </h3>
+                
+                <?php if (!empty($settings['button_text'])) : ?>
+                    <div class="pricing-btn">
+                        <a href="<?php echo esc_url($settings['button_link']['url'] ?? '#'); ?>" 
+                           class="btn s-btn btn-link bdevselement-pricing-table-btn">
+                            <?php echo wp_kses_post($settings['button_text']); ?>
+                        </a>
+                    </div>
+                <?php endif; ?>
             </div>
+        </div>
+        <?php
+    }
 
-        <?php elseif (isset($settings['design_style']) && $settings['design_style'] === 'style_2') :
+    /**
+     * Render Style 2 template
+     *
+     * @param array  $settings Widget settings.
+     * @param string $currency Currency symbol.
+     */
+    private function render_style_2($settings, $currency) {
+        $class_name = !empty($settings['active_price']) ? 'active' : '';
+        ?>
+        <div class="pricing-three-item mb-30 <?php echo esc_attr($class_name); ?>">
+            <div class="pricing-three-head">
+                <?php if (!empty($settings['title'])) : ?>
+                    <h4 class="title bdevselement-pricing-table-title"><?php echo wp_kses_post($settings['title']); ?></h4>
+                <?php endif; ?>
 
-		    $class_name = !empty($settings['active_price']) ? 'active' : '';
+                <?php if (!empty($settings['sub_title'])) : ?>
+                    <span class="devices-support"><?php echo wp_kses_post($settings['sub_title']); ?></span>
+                <?php endif; ?>
 
-		?>
-
-            <div class="pricing-three-item mb-30 <?php print esc_attr($class_name); ?>">
-                <div class="pricing-three-head">
-                    <?php if ($settings['title']) : ?>
-                        <h4 class="title bdevselement-pricing-table-title"><?php echo wp_kses($settings['title']); ?></h4>
-                    <?php endif; ?>
-
-                    <?php if ($settings['sub_title']) : ?>
-                        <span class="devices-support"><?php echo wp_kses($settings['sub_title']); ?></span>
-                    <?php endif; ?>
-
-
+                <?php if (!empty($settings['devices'])) : ?>
                     <ul class="devices-icon-wrap">
                         <?php foreach ($settings['devices'] as $device) : ?>
-                            <li><?php if (!empty($device['icon_2']) || !empty($device['selected_icon_2']['value'])) :
+                            <li>
+                                <?php 
+                                if (!empty($device['icon_2']) || !empty($device['selected_icon_2']['value'])) :
                                     Icons_Manager::render_icon($device, 'icon_2', 'selected_icon_2');
-                                endif; ?>
+                                endif; 
+                                ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </div>
+
+            <?php if (!empty($settings['features_switch']) && !empty($settings['features_list'])) : ?>
+                <div class="pricing-three-list netfix_pricing_before_disable bdevselement-pricing-table-features-list">
+                    <ul>
+                        <?php foreach ($settings['features_list'] as $feature) : ?>
+                            <li>
+                                <?php 
+                                if (!empty($feature['icon']) || !empty($feature['selected_icon']['value'])) :
+                                    Icons_Manager::render_icon($feature, 'icon', 'selected_icon');
+                                endif; 
+                                ?>
+                                <?php echo wp_kses_post($feature['text'] ?? ''); ?>
                             </li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
+            <?php endif; ?>
 
-                <?php if (!empty($settings['features_switch'])) : ?>
-                    <div class="pricing-three-list netfix_pricing_before_disable bdevselement-pricing-table-features-list">
-                        <ul>
-                            <?php foreach ($settings['features_list'] as $index => $feature) : ?>
-                                <li><?php if (!empty($feature['icon']) || !empty($feature['selected_icon']['value'])) :
-                                        Icons_Manager::render_icon($feature, 'icon', 'selected_icon');
-                                    endif; ?><?php echo wp_kses($feature['text']); ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
+            <h2 class="pricing-three-price bdevselement-pricing-table-period">
+                <?php if (!empty($settings['period_from'])) : ?>
+                    <span><?php echo wp_kses_post($settings['period_from']); ?></span>
                 <?php endif; ?>
+                <?php echo esc_html($currency); ?><?php echo wp_kses_post($settings['price'] ?? ''); ?>
+                <span><?php echo wp_kses_post($settings['period'] ?? ''); ?></span>
+            </h2>
+            
+            <?php if (!empty($settings['button_text'])) : ?>
+                <a href="<?php echo esc_url($settings['button_link']['url'] ?? '#'); ?>" 
+                   class="btn s-btn transparent-btn bdevselement-pricing-table-btn">
+                    <?php echo wp_kses_post($settings['button_text']); ?>
+                </a>
+            <?php endif; ?>
+        </div>
+        <?php
+    }
 
-                <h2 class="pricing-three-price bdevselement-pricing-table-period">
-                    <?php if (!empty($settings['period_from'])) : ?>
-                        <span><?php echo wp_kses($settings['period_from']); ?></span>
-                    <?php endif; ?>
-                    <?php echo esc_html($currency); ?><?php echo wp_kses($settings['price']); ?>
-                    <span><?php echo wp_kses($settings['period']); ?></span>
-                </h2>
-                <?php if (!empty($settings['button_text'])) : ?>
-                    <a href="<?php echo esc_url($settings['button_link']['url']); ?>" class="btn s-btn transparent-btn bdevselement-pricing-table-btn"><?php echo wp_kses($settings['button_text']); ?></a>
-                <?php endif; ?>
-            </div>
+    /**
+     * Render Style 1 (default) template
+     *
+     * @param array  $settings Widget settings.
+     * @param string $currency Currency symbol.
+     */
+    private function render_style_1($settings, $currency) {
+        $class_name = !empty($settings['active_price']) ? 'active' : '';
 
-
-        <?php else :
-
-            $class_name = !empty($settings['active_price']) ? 'active' : '';
-
-            $this->add_inline_editing_attributes('button_footer', 'none');
-            $this->add_render_attribute('button_footer', 'class', 'price-btn');
-            if (!empty($settings['button_link'])) {
-			    $this->add_link_attributes('button_footer', $settings['button_link']);
-			}
+        // Setup button attributes
+        $this->add_inline_editing_attributes('button_footer', 'none');
+        $this->add_render_attribute('button_footer', 'class', 'price-btn');
+        if (!empty($settings['button_link'])) {
+            $this->add_link_attributes('button_footer', $settings['button_link']);
+        }
         ?>
-            <div class="pricing-item mb-30 <?php print esc_attr($class_name); ?>">
-                <div class="pricing-thumb">
+        <div class="pricing-item mb-30 <?php echo esc_attr($class_name); ?>">
+            <div class="pricing-thumb">
+                <?php if (!empty($settings['image']['id']) && isset($settings['type']) && $settings['type'] === 'image') : ?>
+                    <?php echo Group_Control_Image_Size::get_attachment_image_html($settings, 'thumbnail', 'image'); ?>
+                <?php else : ?>
+                    <?php Icons_Manager::render_icon($settings, 'icon', 'selected_icon'); ?>
+                <?php endif; ?>
 
-                    <?php if (!empty($settings['image']['id']) && $settings['type'] === 'image') : ?>
-                        <?php echo Group_Control_Image_Size::get_attachment_image_html($settings, 'thumbnail', 'image'); ?>
-                    <?php else : ?>
-                        <?php Icons_Manager::render_icon($settings, 'icon', 'selected_icon'); ?>
-                    <?php endif; ?>
-
-                    <?php if (isset($settings['title']) && $settings['title']) : ?>
-					    <h3 class="title bdevselement-pricing-table-title"><?php echo wp_kses($settings['title']); ?></h3>
-					<?php endif; ?>
-                    <div class="net-speed">
-                        <?php if (!empty($settings['sub_title'])) : ?>
-                            <h5><?php echo wp_kses($settings['sub_title']); ?> <span><?php echo wp_kses($settings['description']); ?></span></h5>
-                        <?php endif; ?>
-                    </div>
-                </div>
-                <div class="pricing-content">
-                    <?php if (!empty($settings['features_switch'])) : ?>
-                        <ul class="pricing-list bdevselement-pricing-table-features-list">
-                            <?php foreach ($settings['features_list'] as $index => $feature) : ?>
-                                <li>
-                                    <?php if (!empty($feature['icon']) || !empty($feature['selected_icon']['value'])) :
-                                        Icons_Manager::render_icon($feature, 'icon', 'selected_icon');
-                                    endif; ?> <?php echo wp_kses($feature['text']); ?>
-
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                    <?php endif; ?>
-                    <div class="price-wrap">
-                        <?php if (!empty($settings['period_from'])) : ?>
-                            <span><?php echo wp_kses($settings['period_from']); ?></span>
-                        <?php endif; ?>
-                        <h3 class="price bdevselement-pricing-table-period">
-						    <?php echo esc_html($currency); ?>
-						    <?php echo isset($settings['price']) ? wp_kses($settings['price']) : ''; ?>
-						    <sub><?php echo isset($settings['period']) ? wp_kses($settings['period']) : ''; ?></sub>
-						</h3>
-                    </div>
-                    <?php if (!empty($settings['button_text'])) : ?>
-                        <div class="pricing-btn">
-                            <a href="<?php echo esc_url($settings['button_link']['url']); ?>" class="btn s-btn btn-link bdevselement-pricing-table-btn"><?php echo wp_kses($settings['button_text']); ?></a>
-                        </div>
+                <?php if (!empty($settings['title'])) : ?>
+                    <h3 class="title bdevselement-pricing-table-title"><?php echo wp_kses_post($settings['title']); ?></h3>
+                <?php endif; ?>
+                
+                <div class="net-speed">
+                    <?php if (!empty($settings['sub_title'])) : ?>
+                        <h5>
+                            <?php echo wp_kses_post($settings['sub_title']); ?>
+                            <?php if (!empty($settings['description'])) : ?>
+                                <span><?php echo wp_kses_post($settings['description']); ?></span>
+                            <?php endif; ?>
+                        </h5>
                     <?php endif; ?>
                 </div>
             </div>
-
-        <?php endif; ?>
-
-<?php
+            
+            <div class="pricing-content">
+                <?php if (!empty($settings['features_switch']) && !empty($settings['features_list'])) : ?>
+                    <ul class="pricing-list bdevselement-pricing-table-features-list">
+                        <?php foreach ($settings['features_list'] as $feature) : ?>
+                            <li>
+                                <?php 
+                                if (!empty($feature['icon']) || !empty($feature['selected_icon']['value'])) :
+                                    Icons_Manager::render_icon($feature, 'icon', 'selected_icon');
+                                endif; 
+                                ?> 
+                                <?php echo wp_kses_post($feature['text'] ?? ''); ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+                
+                <div class="price-wrap">
+                    <?php if (!empty($settings['period_from'])) : ?>
+                        <span><?php echo wp_kses_post($settings['period_from']); ?></span>
+                    <?php endif; ?>
+                    
+                    <h3 class="price bdevselement-pricing-table-period">
+                        <?php echo esc_html($currency); ?>
+                        <?php echo wp_kses_post($settings['price'] ?? ''); ?>
+                        <sub><?php echo wp_kses_post($settings['period'] ?? ''); ?></sub>
+                    </h3>
+                </div>
+                
+                <?php if (!empty($settings['button_text'])) : ?>
+                    <div class="pricing-btn">
+                        <a href="<?php echo esc_url($settings['button_link']['url'] ?? '#'); ?>" 
+                           class="btn s-btn btn-link bdevselement-pricing-table-btn">
+                            <?php echo wp_kses_post($settings['button_text']); ?>
+                        </a>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php
     }
 }
 
-// After the Xhub_Pricing_Table_New class is defined, I must register the new widget class with Elementor:
-Plugin::instance()->widgets_manager->register( new Xhub_Pricing_Table_New() );
+// Register the widget with Elementor
+Plugin::instance()->widgets_manager->register(new Xhub_Pricing_Table_New());
