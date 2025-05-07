@@ -1241,7 +1241,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
                     <ul class="devices-icon-wrap">
                         <?php foreach ($settings['devices'] as $device) : ?>
                             <li><?php if (!empty($device['icon_2']) || !empty($device['selected_icon_2']['value'])) :
-                                    bdevs_element_render_icon($device, 'icon_2', 'selected_icon_2');
+                                    Icons_Manager::render_icon($device, 'icon_2', 'selected_icon_2');
                                 endif; ?>
                             </li>
                         <?php endforeach; ?>
@@ -1253,7 +1253,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
                         <ul>
                             <?php foreach ($settings['features_list'] as $index => $feature) : ?>
                                 <li><?php if (!empty($feature['icon']) || !empty($feature['selected_icon']['value'])) :
-                                        bdevs_element_render_icon($feature, 'icon', 'selected_icon');
+                                        Icons_Manager::render_icon($feature, 'icon', 'selected_icon');
                                     endif; ?><?php echo wp_kses($feature['text']); ?></li>
                             <?php endforeach; ?>
                         </ul>
@@ -1289,7 +1289,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
                     <?php if (!empty($settings['image']['id']) && $settings['type'] === 'image') : ?>
                         <?php echo Group_Control_Image_Size::get_attachment_image_html($settings, 'thumbnail', 'image'); ?>
                     <?php else : ?>
-                        <?php bdevs_element_render_icon($settings, 'icon', 'selected_icon'); ?>
+                        <?php Icons_Manager::render_icon($settings, 'icon', 'selected_icon'); ?>
                     <?php endif; ?>
 
                     <?php if ($settings['title']) : ?>
@@ -1307,7 +1307,7 @@ class Xhub_Pricing_Table_New extends Widget_Base
                             <?php foreach ($settings['features_list'] as $index => $feature) : ?>
                                 <li>
                                     <?php if (!empty($feature['icon']) || !empty($feature['selected_icon']['value'])) :
-                                        bdevs_element_render_icon($feature, 'icon', 'selected_icon');
+                                        Icons_Manager::render_icon($feature, 'icon', 'selected_icon');
                                     endif; ?> <?php echo wp_kses($feature['text']); ?>
 
                                 </li>
