@@ -1626,6 +1626,3 @@ class Xhub_Pricing_Table_New extends Widget_Base
         <?php
     }
 }
-
-// Register the widget with Elementor
-Plugin::instance()->widgets_manager->register(new Xhub_Pricing_Table_New());
